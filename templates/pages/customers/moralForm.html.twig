@@ -1,0 +1,62 @@
+{% extends "themes/base_homepage.html.twig" %}
+
+{% block title %} Créer un contact {% endblock %}
+
+{% block description %} Création d'un nouveau contact {% endblock %}
+
+{% block JQuery %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        {#<div class="d-flex flex-start m-auto">
+             <button class="Return">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+
+                 <a href="{{path('project.customer.index',{'id_project':project.id})}}" class="text text-decoration-none">Retour</a>
+            </button>
+        </div>#}
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <div class="my-2">
+
+                    {{form_start(moralForm)}}
+                    <div class="mb-3">
+                        <label for="physical_form_firstName">Nom Companie</label>
+                        <div class="text-danger">{{ form_errors(moralForm.companyName) }}</div>
+                        {{form_widget(moralForm.companyName, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_lastName">Type Company</label>
+                        <div class="text-danger">{{ form_errors(moralForm.companyType) }}</div>
+                        {{form_widget(moralForm.companyType, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_dateBirthday">Siret</label>
+                        <div class="text-danger">{{ form_errors(moralForm.siret) }}</div>
+                        {{form_widget(moralForm.siret)}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_gender">Nom Contact</label>
+                        <div class="text-danger">{{ form_errors(moralForm.contactName) }}</div>
+                        {{form_widget(moralForm.contactName, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_gender">Prenom Contact</label>
+                        <div class="text-danger">{{ form_errors(moralForm.contactFirstName) }}</div>
+                        {{form_widget(moralForm.contactFirstName, {'attr':{'class':'form-control'}})}}
+                    </div>
+
+
+
+                    <div class="my-3">
+                        <input formnovalidate type="submit" class="btn btn-success w-25 shadow" value="Valider">
+                    </div>
+                    {{form_end(moralForm)}}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

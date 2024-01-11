@@ -1,0 +1,59 @@
+{% extends "themes/base_homepage.html.twig" %}
+
+{% block title %} - Créer une nouvelle organisation {% endblock %}
+
+{% block description %} - Création d'une nouvelle organisation{% endblock %}
+
+{% block JQuery %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-5" data-aos="fade-up-right">Ajout d'une nouvelle organisation</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-7 my-5">
+                {{form_start(organizationForm)}}
+                    <div class="mb-3">
+                        <label for="organization_form_organisationName">Nom de l'organisation</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.organizationName) }}</div>
+                        {{form_widget(organizationForm.organizationName, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_address">Siret</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.siret) }}</div>
+                        {{form_widget(organizationForm.siret, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_zip">Adresse</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.address) }}</div>
+                        {{form_widget(organizationForm.address, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_city">Code postal</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.zip) }}</div>
+                        {{form_widget(organizationForm.zip, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_country">Pays</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.country) }}</div>
+                        {{form_widget(organizationForm.country, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_address">Tel</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.tel) }}</div>
+                        {{form_widget(organizationForm.tel, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="physical_form_address">type</label>
+                        <div class="text-danger">{{ form_errors(organizationForm.type) }}</div>
+                        {{form_widget(organizationForm.type, {'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="my-3">
+                        <input formnovalidate type="submit" class="btn btn-success w-25 shadow" value="Valider">
+                    </div>
+                {{form_end(organizationForm)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
