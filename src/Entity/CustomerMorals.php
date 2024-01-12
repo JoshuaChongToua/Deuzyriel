@@ -57,11 +57,16 @@ class CustomerMorals
     #[ORM\Column(name:"contact_first_name",length: 255)]
     private ?string $contactFirstName = null;
 
+    #[ORM\OneToMany(mappedBy: 'customer_morals', targetEntity: Donations::class, orphanRemoval: true)]
+    private Customers $customerMoral;
 
+    #[ORM\OneToOne(mappedBy: 'a', targetEntity: Donations::class, orphanRemoval: true)]
+    private Collection $donations;
 
     public function __construct()
     {
         $this->donations = new ArrayCollection();
+        $this->customerMoral = new Customers();
     }
 
     public function getId(): ?int

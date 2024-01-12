@@ -150,10 +150,12 @@ class PhysicalCustomerController extends TemplateManager
         if ($physicalForm->isSubmitted() && $physicalForm->isValid()) {
             $em->persist($physicalEntity);
             $em->flush();
+            $customerId = $physicalEntity->getId();
+            //var_dump($customerId);
             $this->addFlash("success", "Le nouveau donateur a bien été pris en compte.");
 
 
-            return $this->redirectToRoute('project.customer.physical', ['id_project' => $request->get('id_project')]);
+            return $this->redirectToRoute('project.customer.create', ['id_project' => $request->get('id_project'), 'customerId' => $customerId]);
         }
 
         return $this->display($request, 'pages/customers/physicalForm.html.twig', [

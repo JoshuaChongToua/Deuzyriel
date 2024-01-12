@@ -53,6 +53,9 @@ class CustomerController extends TemplateManager
 
         $projectEntity = $projectRepository->findOneBy(['id' => $request->get('id_project')]);
         $customerEntity = new Customers();
+        $customerId = $request->get('customerId');
+        $customerEntity->setId($customerId);
+        var_dump($customerId);
         $organizationEntities = $organizationRepository->findAll();
         $customerForm = $this->createForm(CustomerFormType::class, $customerEntity,['organizations' => $organizationEntities]);
         $customerForm->handleRequest($request);
@@ -65,6 +68,7 @@ class CustomerController extends TemplateManager
             $em->flush();
             $this->addFlash("success", "Le nouveau donateur a bien été pris en compte.");
             $customerType = $customerEntity->getCustomerType();
+
             /*if ($customerType === "physical") {
                 return $this->redirectToRoute('project.customer.create.physical', ['id_project' => $request->get('id_project')]);
             }

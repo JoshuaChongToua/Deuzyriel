@@ -110,16 +110,9 @@ class Customers
     #[ORM\OneToMany(mappedBy: 'customers', targetEntity: Donations::class, orphanRemoval: true)]
     private Collection $donations;
 
-    #[ORM\OneToOne(mappedBy: 'customer_physical', targetEntity: CustomerPhysicals::class, orphanRemoval: true)]
-    private CustomerPhysicals $physicalCustomers;
-
-    #[ORM\OneToOne(mappedBy: 'customers', targetEntity: CustomerMorals::class, orphanRemoval: true)]
-    private CustomerMorals $moralCustomers;
-
     public function __construct()
     {
         $this->donations = new ArrayCollection();
-        $this->physicalCustomers = new CustomerPhysicals();
     }
 
     /**
